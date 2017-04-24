@@ -8,10 +8,6 @@
     <!-- CSS -->
     <link href="style/css/transdmin.css" rel="stylesheet" type="text/css" media="screen"/>
     <link rel="stylesheet" href="style/css/codemirror.css">
-
-    <!-- JavaScripts-->
-    <script type="text/javascript" src="style/js/jquery.js"></script>
-    <script type="text/javascript" src="style/js/jNice.js"></script>
 </head>
 
 <body>
@@ -30,7 +26,7 @@
         <?php
 
         include('conexion.php');
-        $_SESSION['concurso'] = 0;//Temporal. Hay que hacer la consulta del concurso corriendo, según la fecha y la hora actual.
+        $_SESSION['concurso'] = 1;//Temporal. Hay que hacer la consulta del concurso corriendo, según la fecha y la hora actual.
         /*connectdb();
         $query="select id_concurso from concurso where fecha_concurso=curdate()";
         $result=mysql_query($query);
@@ -60,7 +56,7 @@
                             if (loggedin() && $_SESSION['tipoUsuario'] == 'juez') {
                                 echo '"perfilJurado.php"';
                             } else {
-                                echo '"login.php"';
+                                echo '"perfil.php"';
                             }
                         }
                         ?> target="frame_main">Perfil</a></li>
@@ -83,38 +79,6 @@
             <h2><a id="linkini" href="inicio.php" target="frame_main">Inicio</a> &raquo; <a id="actual" href="#"
                                                                                             class="active"></a></h2>
 
-            <!-- //Esconde el texto in el link actual -->
-            <script type="text/javascript">
-                $(document).ready(function () {
-                    $("#linkini, #linkini2").click(function () {
-                        $("#actual").hide();
-                        $('#sidebar .sideNav li a').removeClass("active");
-                        $('#mainNav li a').removeClass("active");
-                        $("#linkini2").addClass("active");
-                    });
-                });
-
-                $(document).ready(function () {
-                    $("#link1, #link2, #link3, #link4, #link5, #link6, #link7, #link8, #link9").click(function () {
-                        $('#sidebar .sideNav li a').removeClass("active");
-                        $('#mainNav li a').removeClass("active");
-                        $("#actual").html($(this).html());
-                        var a_href = $(this).attr('href');
-                        var a_target = $(this).attr('target');
-                        $("#actual").attr('href', a_href);
-                        $("#actual").attr('target', a_target);
-                        $("#actual").show();
-                    });
-                });
-
-                $(document).ready(function () {
-                    $("#link1, #link2, #link3, #link4, #link5, #link6, #link7, #link8, #link9").click(function () {
-
-                        $(this).addClass("active");
-                    });
-                });
-            </script>
-
             <div id="main2">
                 <iframe src="inicio.php" name="frame_main" width=100% height=700></iframe>
             </div>
@@ -129,5 +93,9 @@
     <p id="footer">SGCPROITM <br></p>
 </div>
 <!-- // #wrapper -->
+<!-- JavaScripts-->
+<script type="text/javascript" src="style/js/jquery.js"></script>
+<script type="text/javascript" src="style/js/jNice.js"></script>
+<script type="text/javascript" src="style/js/index.js"></script>
 </body>
 </html>

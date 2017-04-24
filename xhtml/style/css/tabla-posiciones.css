@@ -1,0 +1,26 @@
+.header img{
+    max-width: 100%;
+}
+
+.header-wrapper{
+    background: #fff;
+    margin-bottom: 20px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+}
+
+.table{
+    border: 1px solid #f5f5f5;
+}
+
+body{
+    background: #fafafa;
+}
+
+.main-wrapper{
+    background: #fff;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+}
