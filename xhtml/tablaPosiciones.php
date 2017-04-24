@@ -45,7 +45,7 @@ $num = mysql_num_rows($result);
                     </thead>
                     <tbody>
                     <?php
-
+/*
                     while ($fields = mysql_fetch_array($result, MYSQL_ASSOC)) {
 
                         echo '<tr><td>' . $fields['id_equipo'] . '</td>             <td>' . $fields['nombre'] . '</td><td>' . $fields['resueltas'] . '</td>
@@ -53,7 +53,7 @@ $num = mysql_num_rows($result);
 <td>' . $fields['posicion'] . '</td></tr>';
 
                     }
-                    ?>
+                    */?>
                     </tbody>
                 </table>
             </div>

@@ -3,7 +3,7 @@ var sgcproitm = sgcproitm || {};
 sgcproitm.actualizarTabla = function () {
 
     $.ajax({
-        url: '/sgcproitm-dev/sgcproitm/xhtml/controladores/actualizar-tabla.php'
+        url: '/conrepro/sgcproitm/xhtml/controladores/actualizar-tabla.php'
     }).done(function (response) {
         $("#tabla-de-posiciones").find('tbody').html(response);
     });
@@ -30,5 +30,6 @@ sgcproitm.interval= function(func, wait, times){
 };
 
 $(document).ready(function () {
+    sgcproitm.actualizarTabla();
     sgcproitm.interval(sgcproitm.actualizarTabla, 5000);
 });
