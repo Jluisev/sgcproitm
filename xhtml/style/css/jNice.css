@@ -116,7 +116,7 @@ button span span {
  * Selects
  * ------------- */
 .jNiceSelectWrapper {
-	width: 80px;
+	width: 250px;
 	position:relative;
 	height: 26px;
 	float: left;
@@ -126,7 +126,7 @@ button span span {
 .jNiceSelectWrapper div span {
 	float: left;
 	position: relative;
-	width: 50px;
+	width: 220px;
 	height: 26px;
 	background: url(../img/select_left.gif) no-repeat left top;
 	line-height: 18px;
@@ -149,7 +149,7 @@ button span span {
 
 .jNiceSelectWrapper ul {
 	position: absolute;
-	width: 80px !important;
+	width: 248px !important;
 	top: 26px;
 	left: 0px;
 	list-style: none;

@@ -36,13 +36,14 @@ if (isset($_GET['evaluado'])) {
     <br>
     <table cellpadding="0" cellspacing="0">
         <tr class="odd">
-            <th>IdProblema</th>
-            <th>Nombre</th>
             <th>Equipo</th>
+            <th>#Problema</th>
+            <th>Nombre</th>
+            <th>Dificultad</th>
             <th>Hora</th>
             <th>Estado</th>
             <th>Lenguaje</th><?php //if(loggedin()&&$_SESSION['tipoUsuario']=='juez'){
-            echo '<th>Accion</th>';
+            echo '<th>Acción</th>';
             //  }
             ?></tr>
         <?php
@@ -52,8 +53,8 @@ if (isset($_GET['evaluado'])) {
             $resultEquipo = mysql_query($queryEquipo);
             $fieldsEquipo = mysql_fetch_array($resultEquipo);
 
-            echo '<tr>
-<td>' . $fields['id_problemas'] . '</td><td>' . $fields['nombre_problema'] . '</td><td>' . $fieldsEquipo['nombre'] . '</td><td>' . $fields['hora'] . '</td><td>' . $fields['evaluacion'] . '</td><td>' . $fields['lenguaje'] . '</td>';
+            echo '<tr><td>' . $fieldsEquipo['nombre'] .'
+<td>' . $fields['id_problemas'] . '</td><td>' . $fields['nombre_problema'] . '</td><td>' . $fields['dificultad'] . '</td><td>' . $fields['hora'] . '</td><td>' . $fields['evaluacion'] . '</td><td>' . $fields['lenguaje'] . '</td>';
 
             if (loggedin() && $_SESSION['tipoUsuario'] == 'juez') {
                 echo '<td class="action"><a href="evaluarSolucion.php?idSolucion=' . $fields['id_solucion'] . '" class="view">Evaluar</a></td>';

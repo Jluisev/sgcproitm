@@ -45,18 +45,20 @@ function archivarSolucion($fields)
 function correccionDisminuirPuntos($fieldsEquipo, $fields)
 {
 
-    echo 'si entra';
-
     $queryCorregirEquipo = "Update equipo_concurso set resueltas='" . ($fieldsEquipo['resueltas'] - 1) . "', puntuacion='" . ($fieldsEquipo['puntuacion'] - $fields['puntosObtenidos']) . "' where id_equipo_concurso='" . $fieldsEquipo['id_equipo_concurso'] . "'";
     mysql_query($queryCorregirEquipo);
 
     actualizarPosiciones();
 }
 
-$puntos = 110;//Agregando el sistema de puntuación
+$puntos = [
+    "1" => "90",
+    "2" => "130",
+    "3" => "160"
+];//Agregando el sistema de puntuación
 $reduccion = 0;
 
-$query = "Select * from solucion where id_concurso='" . $_SESSION['concurso'] . "' and id_solucion='" . $_GET['idSolucion'] . "'";
+$query = "Select * from solucion inner join problemas using(id_problemas) where id_concurso='" . $_SESSION['concurso'] . "' and id_solucion='" . $_GET['idSolucion'] . "'";
 $result = mysql_query($query);
 $fields = mysql_fetch_array($result);
 
@@ -96,7 +98,7 @@ if (isset($_POST['evaluacion'])) {
                 $reduccion = ($fields['nenvios']) * 10;
             }
 
-            $puntos = $puntos - $reduccion;
+            $puntos = $puntos[$fields['dificultad']] - $reduccion;
             $puntosObtenidos = $puntos;
             $puntos = $puntos + $fieldsEquipo['puntuacion'];
 
@@ -132,7 +134,7 @@ if (isset($_POST['evaluacion'])) {
         mysql_query($queryCorrecta);
         }*/
 
-        if ($_POST['solucionAceptada'] == 'Aceptado') {
+        if ($_POST['solucionAceptada'] == 'Aceptado'&&$fields['evaluacion']!=='Aceptado') {
 
             //Ajustando puntos a sumarle al equipo
             if ($fields['nenvios'] > 4) {
@@ -141,7 +143,7 @@ if (isset($_POST['evaluacion'])) {
                 $reduccion = ($fields['nenvios']) * 10;
             }
 
-            $puntos = $puntos - $reduccion;
+            $puntos = $puntos[$fields['dificultad']] - $reduccion;
             $puntosObtenidos = $puntos;
             $puntos = $puntos + $fieldsEquipo['puntuacion'];
 

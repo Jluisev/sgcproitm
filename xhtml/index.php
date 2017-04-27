@@ -12,8 +12,7 @@
 
 <body>
 <div id="wrapper">
-    <!-- h1 tag stays for the logo, you can use the a tag for linking the index page -->
-    <h1><a href="#"><span>Transdmin Light</span></a></h1>
+    <div class="itm-logo"><img src="./style/img/banner_web.927f4be5.jpeg" alt=""></div>
 
     <!-- You can name the links with lowercase, they will be transformed to uppercase by CSS, we prefered to name them with uppercase to have the same effect with disabled stylesheet -->
     <ul id="mainNav">

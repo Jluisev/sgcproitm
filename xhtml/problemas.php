@@ -31,14 +31,17 @@ $num = mysql_num_rows($result);
     <br>
     <table cellpadding="0" cellspacing="0">
         <tr class="odd">
-            <th>Id Problema</th>
+            <th>#Problema</th>
             <th>Nombre</th>
+            <th>Dificultad</th>
         </tr>
         <?php
         while ($fields = mysql_fetch_array($result, MYSQL_ASSOC)) {
             echo '<tr><td style="width:100px">' . $fields['id_problemas'] . '</td>
             <td class="action"><a href="descProblemas.php?idProblema=' . $fields['id_problemas'] . '" class="view">' . $fields['nombre_problema'] . '</a>
-            </td></tr>';
+            </td>
+            <td style="width:100px">' . $fields['dificultad'] . '</td>
+            </tr>';
 
         }
         ?>

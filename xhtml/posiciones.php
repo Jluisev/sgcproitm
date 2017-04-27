@@ -24,7 +24,10 @@ connectdb();
 
 $i = 0;
 
-$query = "Select * from equipo_concurso inner join equipos using (id_equipo) where id_concurso='" . $_SESSION['concurso'] . "' order by puntuacion desc";
+$query = "Select instituciones.nombre as nombreInstitucion, equipos.nombre as nombreEquipo, equipo_concurso.resueltas, equipo_concurso.puntuacion, equipo_concurso.posicion 
+from (equipo_concurso inner join equipos using (id_equipo)) 
+inner join instituciones using (id_institucion) 
+where id_concurso='" . $_SESSION['concurso'] . "' order by puntuacion desc";
 $result = mysql_query($query);
 $num = mysql_num_rows($result);
 ?>
@@ -33,7 +36,7 @@ $num = mysql_num_rows($result);
     <br>
     <table cellpadding="0" cellspacing="0">
         <tr class="odd">
-            <th>IdEquipo</th>
+            <th>Preparatoria</th>
             <th>Equipo</th>
             <th># Resueltos</th>
             <th>Puntos</th>
@@ -42,13 +45,9 @@ $num = mysql_num_rows($result);
         <?php
 
         while ($fields = mysql_fetch_array($result, MYSQL_ASSOC)) {
-
-            echo '
-                            <tr>
-                                <td>' . $fields['id_equipo'] . '</td>             <td>' . $fields['nombre'] . '</td><td>' . $fields['resueltas'] . '</td>
-<td>' . $fields['puntuacion'] . '</td>
-<td>' . $fields['posicion'] . '</td></tr>';
-
+            echo '<tr><td>' . $fields['nombreInstitucion'] . '</td><td>' . $fields['nombreEquipo'] . '</td><td>' . $fields['resueltas'] . '</td>
+                    <td>' . $fields['puntuacion'] . '</td>
+                    <td>' . $fields['posicion'] . '</td></tr>';
         }
         ?>
 
